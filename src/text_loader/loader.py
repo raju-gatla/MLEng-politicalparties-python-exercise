@@ -7,13 +7,14 @@ from sklearn.preprocessing import LabelEncoder
 class DataLoader:
     def __init__(self, filepath="data/Tweets.csv"):
         self.filepath = filepath
+        self.data = None
         self.load_data()
         self.vectorizer = None
         self.encoder = None
 
     def load_data(self):
         """Loads data from a CSV file."""
-        return pd.read_csv(self.filepath)
+        self.data =  pd.read_csv(self.filepath)
 
     @staticmethod
     def remove_characters(text: str) -> str:
@@ -42,4 +43,3 @@ class DataLoader:
     def preprocess_parties(self):
         self.data.Party = self.data.Party.apply(self.clean_text)
         return self.label_encoder(self.data.Party.values)
-

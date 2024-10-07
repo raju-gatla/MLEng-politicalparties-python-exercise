@@ -1,8 +1,11 @@
+%pip install pytest
+
 import numpy as np
 import pandas as pd
 import pytest
-import sys #TODO fix path
-sys.path.append('src/text_loader')
+import sys 
+#TODO fix path
+sys.path.append('../src/text_loader')
 from loader import DataLoader
 
 @pytest.fixture
@@ -38,5 +41,6 @@ def test_clean_text(data_loader, mock_df):
     text = mock_df['Tweet'].iloc[2]
     cleaned_text = data_loader.clean_text(text)
     assert cleaned_text == ""
+
     
 
